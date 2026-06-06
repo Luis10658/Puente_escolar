@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guías prácticas - AprendemosJuntos</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Aprendemos<span>Juntos</span></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="Index.html">Inicio</a>
+                <a href="directorio.html">Directorio</a>
+                <a href="guias.html" class="active">Guías</a>
+                <a href="comunidad.html">Comunidad</a>
+            </nav>
+            <div class="header-badge">
+                <span class="badge">Proyecto final de programacion web 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="guias-main">
+        <div class="container">
+            <!-- Encabezado -->
+            <div class="guias-header">
+                <h1>Guías prácticas para familias</h1>
+                <p>Información clara, paso a paso, sin tecnicismos · 38 guías disponibles</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filters-section">
+                <div class="filter-buttons">
+                    <button class="filter-btn active">Todas</button>
+                    <button class="filter-btn">TEA</button>
+                    <button class="filter-btn">Auditiva</button>
+                    <button class="filter-btn">Visual</button>
+                    <button class="filter-btn">Motriz</button>
+                    <button class="filter-btn">Becas y apoyos</button>
+                    <button class="filter-btn">Derechos legales</button>
+                </div>
+            </div>
+
+            <!-- Guía destacada - Más consultada -->
+            <div class="featured-guide">
+                <div class="featured-badge">📈 Más consultada esta semana</div>
+                <div class="featured-content">
+                    <h2>Cómo inscribir a tu hijo con TEA en una escuela regular: guía paso a paso</h2>
+                    <p>Desde la primera llamada hasta el primer día de clases — sin perderte en trámites.</p>
+                    <div class="guide-meta">
+                        <span class="tag-guide">TEA</span>
+                        <span class="meta-item">⏱️ 8 min lectura</span>
+                        <span class="meta-item">📄 PDF descargable</span>
+                        <span class="meta-item">🔄 Actualizado feb 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Todas las guías -->
+            <div class="all-guides">
+                <h2>Todas las guías</h2>
+                
+                <div class="guides-grid">
+                    <!-- Guía 1 -->
+                    <div class="guide-card">
+                        <div class="guide-category auditiva">Auditiva</div>
+                        <h3>Derechos de tu hijo con discapacidad auditiva en la escuela</h3>
+                        <p>Qué puede exigirle a la SEP; cómo pedir intérprete de LSM y qué dice la ley.</p>
+                        <div class="guide-meta-bottom">
+                            <span>⏱️ 6 min</span>
+                            <span>📄 PDF</span>
+                        </div>
+                    </div>
+
+                    <!-- Guía 2 -->
+                    <div class="guide-card">
+                        <div class="guide-category becas">Becas y apoyos</div>
+                        <h3>Becas y apoyos económicos disponibles en 2025</h3>
+                        <p>Programas federales, estatales y de OSCs con fechas de cierre y requisitos.</p>
+                        <div class="guide-meta-bottom">
+                            <span>⏱️ 5 min</span>
+                            <span class="deadline">📅 Cierra 30 jun</span>
+                        </div>
+                    </div>
+
+                    <!-- Guía 3 -->
+                    <div class="guide-card">
+                        <div class="guide-category visual">Visual</div>
+                        <h3>Cómo hablar con los maestros sobre la baja visión de tu hijo</h3>
+                        <p>Qué decir, qué pedir y cómo asegurarte de que el salón esté adaptado.</p>
+                        <div class="guide-meta-bottom">
+                            <span>⏱️ 7 min</span>
+                            <span>📄 PDF</span>
+                        </div>
+                    </div>
+
+                    <!-- Guía 4 -->
+                    <div class="guide-card">
+                        <div class="guide-category motriz">Motriz</div>
+                        <h3>Checklist: ¿la escuela tiene las adaptaciones que mi hijo necesita?</h3>
+                        <p>Lista verificable de rampas, baños adaptados, mobiliario y más.</p>
+                        <div class="guide-meta-bottom">
+                            <span>⏱️ 4 min</span>
+                            <span>✓ Checklist</span>
+                        </div>
+                    </div>
+
+                    <!-- Guía 5 -->
+                    <div class="guide-card">
+                        <div class="guide-category tea">TEA</div>
+                        <h3>Cómo preparar a tu hijo con TEA para el primer día de clases</h3>
+                        <p>Rutinas, anticipación de cambios y cómo coordinar con el maestro.</p>
+                        <div class="guide-meta-bottom">
+                            <span>⏱️ 10 min</span>
+                            <span>📄 PDF</span>
+                        </div>
+                    </div>
+
+                    <!-- Guía 6 -->
+                    <div class="guide-card">
+                        <div class="guide-category derechos">Derechos legales</div>
+                        <h3>Qué dice la ley: educación inclusiva en México explicada para familias</h3>
+                        <p>LGE, LGIPD y convención ONU — sin lenguaje jurídico, solo lo que importa.</p>
+                        <div class="guide-meta-bottom">
+                            <span>⏱️ 9 min</span>
+                            <span>📄 PDF</span>
+                        </div>
+                    </div>
+
+                    <!-- Guía 7 -->
+                    <div class="guide-card">
+                        <div class="guide-category tea">TEA</div>
+                        <h3>Estrategias visuales para niños con TEA en el aula</h3>
+                        <p>Horarios visuales, sistemas de trabajo y comunicación aumentativa.</p>
+                        <div class="guide-meta-bottom">
+                            <span>⏱️ 12 min</span>
+                            <span>📄 PDF</span>
+                        </div>
+                    </div>
+
+                    <!-- Guía 8 -->
+                    <div class="guide-card">
+                        <div class="guide-category auditiva">Auditiva</div>
+                        <h3>Tecnologías de apoyo para estudiantes con discapacidad auditiva</h3>
+                        <p>Audífonos, implantes cocleares, FM y apps útiles.</p>
+                        <div class="guide-meta-bottom">
+                            <span>⏱️ 7 min</span>
+                            <span>📄 PDF</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="view-all">
+                    <a href="#" class="btn-view-all">Ver todas las guías (38)</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>Accesible | Sin registro | Información gratuita | Última actualización: mayo 2025</p>
+        </div>
+    </footer>
+
+    <button class="btn">Oscuro</button>
+    <script src="Code.js"></script>
+</body>
+</html>

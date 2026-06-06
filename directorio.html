@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio de escuelas inclusivas - AprendemosJuntos</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<style>
+    #map {
+        height: 80vh;
+    }
+</style>
+
+<body class="light-theme">
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Aprendemos<span>Juntos</span></h1>
+            </div>
+            <nav class="main-nav">
+                <a href="Index.html">Inicio</a>
+                <a href="directorio.html" class="active">Directorio</a>
+                <a href="guia.html">Guías</a>
+                <a href="comunidad.html">Comunidad</a>
+            </nav>
+            <div class="header-badge">
+                <span class="badge">Proyecto final de programacion web 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="directorio-main">
+        <div class="container">
+            <div class="directorio-header">
+                <h1>Directorio de escuelas inclusivas</h1>
+                <p class="subtitle">432 escuelas registradas en México · Actualizado mayo 2025</p>
+<div class="search-bar-container" style="position: relative; width: 100%;">
+    <div class="search-bar" style="display: flex; gap: 10px;">
+        <input id="txt-buscador" type="text" placeholder="Nombre de escuela o municipio..."
+            class="search-input" style="flex: 1;">
+        <button id="btn-filtros-avanzados" class="filter-btn"
+            style="background-color: #e0d5c0; padding: 10px 15px; border-radius: 8px; cursor: pointer;">
+            ⚙️ Filtros
+        </button>
+        <button id="btn-limpiar" class="filter-btn" onclick="limpiarFiltros()"
+            style="background-color: #f5c6cb; color: #721c24; padding: 10px 15px; border-radius: 8px; cursor: pointer;">
+            🧹 Limpiar
+        </button>
+        <button class="search-btn" onclick="filtrarEscuelasPorAPI()">Buscar</button>
+    </div>
+
+    <div id="panel-filtros"
+        style="display: none; position: absolute; top: 110%; left: 0; width: 100%; background: var(--bg-card, #fff8f0); border: 1px solid var(--border, #e0d5c0); padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); z-index: 1000; gap: 15px; grid-template-columns: repeat(3, 1fr);">
+
+        <div class="filtro-campo" style="display: flex; flex-direction: column; gap: 5px;">
+            <label style="font-weight: 600; font-size: 0.9rem;">Delegación / Alcaldía</label>
+            <input id="filtro-delegacion" type="text" placeholder="Ej. Coyoacán"
+                style="padding: 8px; border: 1px solid var(--border); border-radius: 4px; background: transparent; color: inherit;">
+        </div>
+
+        <div class="filtro-campo" style="display: flex; flex-direction: column; gap: 5px;">
+            <label style="font-weight: 600; font-size: 0.9rem;">Ciudad / Estado</label>
+            <input id="filtro-ciudad" type="text" placeholder="Ej. CDMX"
+                style="padding: 8px; border: 1px solid var(--border); border-radius: 4px; background: transparent; color: inherit;">
+        </div>
+
+        <div class="filtro-campo" style="display: flex; flex-direction: column; gap: 5px;">
+            <label style="font-weight: 600; font-size: 0.9rem;">Turno</label>
+            <select id="filtro-turno"
+                style="padding: 8px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: inherit; cursor: pointer;">
+                <option value="">Todos los turnos</option>
+                <option value="Matutino">Matutino</option>
+                <option value="Vespertino">Vespertino</option>
+            </select>
+        </div>
+
+    </div>
+</div>
+            </div>
+
+            <div class="filters-section">
+                <h3>Filtrar por:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active">Todas</button>
+                    <button class="filter-btn">TEA</button>
+                    <button class="filter-btn">Discapacidad auditiva</button>
+                    <button class="filter-btn">Baja visión</button>
+                    <button class="filter-btn">Motriz</button>
+                    <button class="filter-btn">Primaria</button>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2>Resultados en CDMX</h2>
+
+                <div class="school-card">
+                    <div class="school-info">
+                        <h3>Escuela Primaria Incluyente Benito Juárez</h3>
+                        <p class="school-location">📍 Coyoacán, CDMX</p>
+                        <div class="school-tags">
+                            <span class="tag tag-tea">TEA</span>
+                            <span class="tag tag-vision">Baja visión</span>
+                            <span class="tag tag-access">Rampa de acceso</span>
+                        </div>
+                    </div>
+                    <div class="school-distance">+0.81 km</div>
+                </div>
+
+                <div class="school-card">
+                    <div class="school-info">
+                        <h3>Centro de Atención Múltiple No. 47</h3>
+                        <p class="school-location">📍 Tlalpan, CDMX</p>
+                        <div class="school-tags">
+                            <span class="tag tag-auditiva">Discapacidad auditiva</span>
+                            <span class="tag tag-motriz">Motriz</span>
+                        </div>
+                    </div>
+                    <div class="school-distance">1.4 km</div>
+                </div>
+
+                <div class="school-card">
+                    <div class="school-info">
+                        <h3>Escuela Secundaria Técnica Inclusiva 112</h3>
+                        <p class="school-location">📍 Xochimilco, CDMX</p>
+                        <div class="school-tags">
+                            <span class="tag tag-tea">TEA</span>
+                            <span class="tag tag-vision">Baja visión</span>
+                            <span class="tag tag-auditiva">Discapacidad auditiva</span>
+                        </div>
+                    </div>
+                    <div class="school-distance">2.1 km</div>
+                </div>
+            </div>
+
+            <div class="map-section" style="padding: 10px 0;">
+                <h3 style="margin-bottom: 10px;">Ubicación en el mapa</h3>
+                <div id="mapa-escuela"
+                    style="height: 300px; width: 100%; border-radius: 8px; border: 1px solid var(--border);"></div>
+            </div>
+
+            <div class="school-detail-card">
+                <h2>Escuela Primaria Incluyente Benito Juárez</h2>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <strong>Nivel</strong>
+                        <span>Primaria</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Teléfono</strong>
+                        <span>55 1234 5678</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Turno</strong>
+                        <span>Matutino</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Inscripciones</strong>
+                        <span class="open">Abiertas</span>
+                    </div>
+                </div>
+                <button class="btn-full">Ver ficha completa</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>Accesible | Sin registro | Información gratuita | Última actualización: mayo 2025</p>
+        </div>
+    </footer>
+
+    <button class="btn">Oscuro</button>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="Code.js"></script>
+</body>
+
+</html>
